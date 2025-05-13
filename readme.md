@@ -13,6 +13,14 @@ A Node.js + Express backend system for user registration, login, and feedback su
 ```bash
 npm install
 node index.js
+
+```
+## to download dependencies
+```bash
+
+npm init -y
+npm install express bcrypt jsonwebtoken cookie-parser
+
 ```
 
 
