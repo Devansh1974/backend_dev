@@ -1,20 +1,17 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
-const { register, login } = require('./controllers/authController');
-const { submitFeedback, getFeedback } = require('./controllers/feedbackController');
-const { verifyToken } = require('./middleware/authMiddleware');
+const authRoutes = require('./routes/auth');
+const feedbackRoutes = require('./routes/feedback');
 
 const app = express();
 app.use(express.json());
 app.use(cookieParser());
 
-app.post('/register', register);
-app.post('/login', login);
-app.post('/feedback', verifyToken, submitFeedback);
-app.get('/feedback', verifyToken, getFeedback);
+app.use(authRoutes);
+app.use(feedbackRoutes);
 
-app.get('/hey', (req, res) => {
-  res.send('Welcome');
+app.get('/', (req, res) => {
+  res.send('Feedback Auth Backend Running');
 });
 
 const PORT = 3000;
