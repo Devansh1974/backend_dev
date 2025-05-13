@@ -1,9 +1,9 @@
-import bcrypt from 'bcrypt';
+const bcrypt = require('bcrypt');
 
 class User {
   constructor(username, password) {
     this.username = username;
-    this.password = password; // hashed
+    this.password = password;
     this.feedbacks = [];
   }
 
@@ -14,4 +14,4 @@ class User {
 
 const users = [];
 
-export { User, users };
+module.exports = { User, users };
